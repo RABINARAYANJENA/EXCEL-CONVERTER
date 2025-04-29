@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>File to Excel Converter</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.css" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="css/font-awesome.min.css" />
+
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+
+  <!-- External Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+  <style>
+    /* Custom styles for the file-to-excel page */
+    body {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #fff;
+      font-family: 'Roboto', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+
+    h1 {
+      margin-bottom: 1rem;
+      font-weight: 900;
+      text-align: center;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .upload-container {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 2rem;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(8.5px);
+      -webkit-backdrop-filter: blur(8.5px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      animation: fadeIn 1s ease forwards;
+    }
+
+    input[type="file"] {
+      display: block;
+      margin: 1rem auto 2rem auto;
+      width: 100%;
+      padding: 0.5rem;
+      border-radius: 10px;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      background: #fff;
+      color: #333;
+      transition: box-shadow 0.3s ease;
+    }
+
+    input[type="file"]:focus,
+    input[type="file"]:hover {
+      box-shadow: 0 0 10px #764ba2;
+      outline: none;
+    }
+
+    button#convertBtn {
+      display: block;
+      margin: 0 auto;
+      background: #764ba2;
+      border: none;
+      padding: 0.75rem 2rem;
+      border-radius: 50px;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(118, 75, 162, 0.6);
+      transition: background 0.3s ease, transform 0.3s ease;
+      animation: pulse 2s infinite;
+    }
+
+    button#convertBtn:hover {
+      background: #5a357a;
+      transform: scale(1.05);
+    }
+
+    #status {
+      margin-top: 1rem;
+      text-align: center;
+      font-weight: 600;
+      min-height: 1.5rem;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(118, 75, 162, 0.7);
+      }
+
+      70% {
+        box-shadow: 0 0 0 10px rgba(118, 75, 162, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(118, 75, 162, 0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 576px) {
+      .upload-container {
+        padding: 1rem;
+      }
+
+      button#convertBtn {
+        width: 100%;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1>File to Excel Converter</h1>
+  <div class="upload-container">
+    <input type="file" id="fileInput" multiple accept=".txt,.docx,.pdf" />
+    <button id="convertBtn">Convert & Download Excel</button>
+    <div id="status"></div>
+  </div>
+
+  <script src="file-to-excel.js"></script>
+</body>
+
+</html>
